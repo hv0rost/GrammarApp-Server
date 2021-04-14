@@ -1,2 +1,2 @@
-wrelease: python -m spacy download en_core_web_sm
+worker: python -m spacy download en_core_web_sm
 web: python main.py
