@@ -1,4 +1,6 @@
 import json
+import os
+import json
 import spacy
 from flask import Flask, request, jsonify, make_response, render_template
 from parser import parser
@@ -21,7 +23,7 @@ def spacyInstallizing(spacyLanguage):
     return spacyLanguage
 
 
-grammarTextGetter = spacyInstallizing(spacy.load("en_core_web_sm"))
+grammarTextGetter = spacyInstallizing(spacy.load('en_core_web_sm'))
 # print(searchBatchesActiveVoice(grammarTextGetter, parser.text1, 'PAST_SIMPLE'))
 
 
@@ -75,7 +77,8 @@ def testSender():
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(host='192.168.0.14', port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
 
 
 
